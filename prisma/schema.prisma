@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  password      String
+  conversations Conversation[]
+}
+
+model Conversation {
+  id       String    @id @default(cuid())
+  messages Message[]
+  user     User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String?
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  content        String
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           Role
+  timestamp      DateTime     @default(now())
+}
+
+enum Role {
+  USER
+  BOT
+}
