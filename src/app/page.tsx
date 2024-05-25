@@ -36,7 +36,6 @@ export default function Home() {
     })
       .then((res) => res.json())
       .then((data: { id: string }) => {
-        console.log(data);
         addConversation({
           id: data.id,
           title: text,
