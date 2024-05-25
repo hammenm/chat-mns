@@ -91,7 +91,7 @@ export async function POST(
     include: {
       messages: {
         orderBy: {
-          id: "asc",
+          id: "desc",
         },
         select: {
           id: true,
@@ -103,6 +103,9 @@ export async function POST(
       },
     },
   });
+
+  // Reverse messages order
+  conversationUpdated.messages.reverse();
 
   return new Response(JSON.stringify(conversationUpdated), {
     status: 200,

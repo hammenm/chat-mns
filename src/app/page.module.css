@@ -1,0 +1,11 @@
+.content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.error {
+  background-color: #f56565;
+  color: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}

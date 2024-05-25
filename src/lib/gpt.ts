@@ -11,7 +11,7 @@ export async function askGPT(
     "messages"
   >,
 ): Promise<Awaited<{ role: "assistant"; content: string }>> {
-  if (process.env.NODE_ENV === "development") {
+  if (!process.env.OPENAI_API_KEY && process.env.NODE_ENV !== "development") {
     return Promise.resolve({
       role: "assistant",
       content: "Hello, I am a bot.",

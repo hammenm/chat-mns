@@ -46,6 +46,12 @@ export async function GET(request: Request) {
     },
   );
 
+  // Sort by createdAt
+  conversationsMapped.sort((a, b) => {
+    if (!a.createdAt || !b.createdAt) return 0;
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
   return new Response(JSON.stringify(conversationsMapped), {
     status: 200,
     headers: {

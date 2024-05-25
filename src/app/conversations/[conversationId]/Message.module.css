@@ -1,0 +1,35 @@
+.root {
+  padding: 1.5rem 1rem;
+  justify-content: center;
+  font-size: 1rem;
+  gap: 1.5rem;
+  margin: auto;
+}
+
+.assistant {
+  background-color: #e6e6e6;
+}
+
+.user {
+  background-color: #f5f5fa;
+}
+
+.message {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  font-size: 1rem;
+  margin: auto;
+  max-width: 38rem;
+}
+
+.image {
+  border-radius: 2.25rem;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  width: calc(100% - 115px);
+  flex-direction: column;
+}
