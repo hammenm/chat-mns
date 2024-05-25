@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { User as UserPrisma } from "@prisma/client";
+import { type User as UserPrisma } from "@prisma/client";
 
 type User = Omit<UserPrisma, "password">;
 

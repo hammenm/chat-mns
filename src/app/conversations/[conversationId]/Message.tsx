@@ -18,6 +18,7 @@ export default function Message({ content, role }: MessageProps) {
     >
       <div className={classes.message}>
         <div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className={classes.image}
             src={src}
