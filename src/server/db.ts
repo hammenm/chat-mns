@@ -2,27 +2,14 @@ import { PrismaClient } from "@prisma/client";
 
 import { env } from "@/env.js";
 
-const prismaClientSingleton = () => {
-  return new PrismaClient().$extends({
-    result: {
-      user: {
-        password: {
-          needs: {},
-          compute() {
-            return undefined;
-          },
-        },
-      },
-    },
-  });
-}
+const prismaClientSingleton = () => new PrismaClient();
 
 declare const globalThis: {
   prismaGlobal: ReturnType<typeof prismaClientSingleton>;
 } & typeof global;
 
-const prisma = globalThis.prismaGlobal ?? prismaClientSingleton()
+const prisma = globalThis.prismaGlobal ?? prismaClientSingleton();
 
-export default prisma
+export default prisma;
 
-if (env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma
+if (env.NODE_ENV !== "production") globalThis.prismaGlobal = prisma;
