@@ -9,7 +9,18 @@
 .title {
   font-size: 1.75rem;
   font-weight: 600;
-  padding: 1rem;
+  padding: 1rem 1rem 0;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0 1rem 0.5rem;
+}
+
+.divider {
+  border-top: 1px solid #e0e0e0;
+  margin: 0.5rem 0;
 }
 
 .item {

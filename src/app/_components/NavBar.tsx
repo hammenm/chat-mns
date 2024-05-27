@@ -20,6 +20,10 @@ export default function NavBar({ conversations, loading, error }: NavBarProps) {
       <h1 className={classes.title}>
         <Link href="/">chatMNS</Link>
       </h1>
+      <h6 className={classes.subtitle}>
+        <Link href="/Bareme.pdf">Bareme</Link>
+      </h6>
+      <hr className={classes.divider} />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
       {!loading && !error && conversations.length === 0 && (
