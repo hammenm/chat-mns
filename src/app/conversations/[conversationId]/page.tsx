@@ -40,7 +40,11 @@ export default function ConversationPage() {
     })
       .then((res) => res.json())
       .then((data: { messages: Message[] }) => {
-        setMessages(data.messages);
+        if (!data.messages) {
+          setMessages([]);
+        } else {
+          setMessages(data.messages);
+        }
       })
       .catch((error: Error) => {
         setErrorInit(error);
@@ -88,6 +92,9 @@ export default function ConversationPage() {
       <div className={classes.content}>
         {loadingInit && <p>Loading...</p>}
         {errorInit && <p>Error: {errorInit.message}</p>}
+        {messages.length === 0 && !loadingInit && !errorInit && (
+          <p>No messages yet</p>
+        )}
         {messages.map((message) => (
           <Message
             key={message.id}

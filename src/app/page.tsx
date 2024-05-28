@@ -35,7 +35,10 @@ export default function Home() {
       body: JSON.stringify({ content: text }),
     })
       .then((res) => res.json())
-      .then((data: { id: string }) => {
+      .then((data: { message: string; id: string }) => {
+        if (!data.id) {
+          throw new Error(data.message);
+        }
         addConversation({
           id: data.id,
           title: text,
